@@ -21,7 +21,6 @@ module.exports = (app) => {
 
     // Connect to database
     mongoose.connect("mongodb://admin:admin@ds121299.mlab.com:21299/movie-rest-app", function (err, database) {
-    // mongoose.connect("mongodb://localhost/rest_movie_app" , function (err, database) {
         if (err)
             throw err;
         else
@@ -40,6 +39,5 @@ module.exports = (app) => {
 
         }
     });
-
 
 };
