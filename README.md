@@ -1,7 +1,7 @@
 # node.js app using OMDB Api 
 You can try out this app under : https://radiant-river-78657.herokuapp.com
 
-#### Technologies used: Node.js, Express
+## Technologies used: Node.js, Express
 * Database: MongoDB hosted on mlab.com
 * Views: EJS,
 * Testing: Mocha, Chai
@@ -39,3 +39,18 @@ req.body.film._id = film id to which we want add new comment
 req.body.comment.text = comment text which we want to add
 
 adds new comment to specified film
+
+
+### For local use:
+
+run in terminal `npm install`
+
+and `node app.js`
+
+go to 'http://localhost:3000'
+
+to run tests `mocha`
+
+
+
+
