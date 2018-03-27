@@ -1,27 +1,41 @@
 # node.js app using OMDB Api 
 You can try out this app under : https://radiant-river-78657.herokuapp.com
 
-Technologies used: Node.js, Express
-Database: MongoDB hosted on mlab.com
-Views: EJS,
-Testing: Mocha, Chai
+#### Technologies used: Node.js, Express
+* Database: MongoDB hosted on mlab.com
+* Views: EJS,
+* Testing: Mocha, Chai
 
 routes:
-GET /
+
+**GET /**
+
 index route
 
-GET /movies
+
+**GET /movies**
+
 list of all movies present in MongoDB
 
-POST /movies
+
+**POST /movies**
+
 req.body.title : movie title to find in OMDB
+
 validates if present in OMDB, if yes adds to MongoDb and returns film
+
 else returns: Movie not found!
 
-GET /comments
+
+**GET /comments**
+
 list of all comments present in MongoDB
 
-POST /comments
+
+**POST /comments**
+
 req.body.film._id = film id to which we want add new comment
+
 req.body.comment.text = comment text which we want to add
+
 adds new comment to specified film
