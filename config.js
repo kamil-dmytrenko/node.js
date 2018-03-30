@@ -1,11 +1,12 @@
 // This file handles the configuration of the app.
 // It is required by app.js
 
-const express    = require('express'),
-      engine     = require('ejs-layout'),
-      path       = require('path'),
-      mongoose   = require('mongoose'),
-      bodyParser = require('body-parser');
+const express      = require('express'),
+      engine       = require('ejs-layout'),
+      path         = require('path'),
+      mongoose     = require('mongoose'),
+      bodyParser   = require('body-parser'),
+      errorHandler = require('./controllers/errorController');
 
 module.exports = (app) => {
     app.use(bodyParser.json());
@@ -21,23 +22,16 @@ module.exports = (app) => {
 
     // Connect to database
     mongoose.connect("mongodb://admin:admin@ds121299.mlab.com:21299/movie-rest-app", function (err, database) {
-        if (err)
-            throw err;
-        else
-        {
-            db = database;
-            console.log('Connected to MongoDB');
-            //Start app only after connection is ready
-            let port = process.env.PORT || 3000;
-            app.listen(port, (err) => {
-                if (err) {
-                    throw err;
-                } else {
-                    console.log('Your application is running on http://localhost:' + port);
-                }
-            });
+        if (err) return errorHandler(err);
+        db = database;
+        console.log('Connected to MongoDB');
 
-        }
+        //Start app only after connection is ready
+        let port = process.env.PORT || 3000;
+        app.listen(port, (err) => {
+            if (err) return errorHandler(err);
+            console.log('Your application is running on http://localhost:' + port);
+        });
     });
 
 };
