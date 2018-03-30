@@ -1,25 +1,55 @@
+<% include ../partials/header.ejs%>
 
-<% comments.forEach((comment) => { %>
-    <li><%= comment.text %></li>
-<%})%>
+<div class="ui container">
 
+    <h1 class="ui center aligned header huge inverted"><i class="film icon"></i>Comments</h1>
 
+    <div class="ui two column stackable grid container">
 
-<div>
-    <p>Make new comment</p>
-    <form method="post" action="/comments">
-        <label>film ID</label>
-        <input type="text" name="film[_id]" placeholder="film ID">
-        <label>comment text</label>
-        <input type="text" name="comment[text]" placeholder="text">
-        <button>Search</button>
-    </form>
+        <div class="column infoSection">
+            <div id="comments">
+                <div class="ui icon input">
+                    <input class="fuzzy-search" type="text" placeholder="Filter by film...">
+                    <i class="circular search link icon"></i>
+                </div>
+                <ul class=" ui relaxed divided list">
+                    <% films.forEach(film => { %>
+                        <% film.comments.forEach(comment => { %>
+                        <div class="item">
+                            <%= comment.text %>
+                            <span class="filmTitle"><%= film.Title %></span>
+                        </div>
+                        <% }) %>
+                    <% }) %>
+                    </ul>
+            </div>
+        </div>
+
+        <div class="column infoSection">
+            <form class="ui form" method="post" action="/comments">
+                <div class="field">
+                    <label>Film ID</label>
+                    <input type="text" name="film[_id]" placeholder="Film ID" required>
+                </div>
+                <div class="field">
+                    <label>Comment</label>
+                    <input type="text" name="comment[text]" placeholder="New comment" required>
+                </div>
+                <button class="ui black basic button">Send</button>
+            </form>
+        </div>
+
+        <div class="row">
+            <a class="ui animated inverted fluid button" href="/movies">
+                <div class="visible content">back</div>
+                <div class="hidden content">
+                    <i class="left arrow icon"></i>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
 </div>
-<!--<div>-->
-    <!--<p>Filter all commends by movie</p>-->
-    <!--<form method="post" action="/comments">-->
-        <!--<label>film ID</label>-->
-        <!--<input type="text" name="film[_id]" placeholder="filmID">-->
-        <!--<button>Filter</button>-->
-    <!--</form>-->
-<!--</div>-->
+
+<% include ../partials/footer.ejs%>

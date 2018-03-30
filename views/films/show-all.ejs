@@ -1,34 +1,48 @@
+<% include ../partials/header.ejs%>
 
+<div class="ui container">
 
-<h1>REST Movie App: Movies in db</h1>
+    <h1 class="ui center aligned header  huge inverted"><i class="film icon"></i>REST Movie App</h1>
 
-<table id="myTable" class="tablesorter">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Year</th>
-            <th>Runtime</th>
-            <th>imdbRating</th>
-            <th>filmID</th>
-            <th>BoxOffice</th>
-            <th>Production</th>
-        </tr>
-    </thead>
-    <tbody>
+    <div class="ui column centered grid">
+        <form method="post" action="/movies">
+            <div class="ui icon input">
+                <input type="text" placeholder="Search for film" required>
+                <i class="circular search link icon"></i>
+            </div>
+            <div class="ui buttons">
+                <button class="ui animated inverted button" tabindex="0">
+                    <div class="visible content">Search</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
+                    </div>
+                </button>
+                <a class="ui inverted button" href="/comments">Comments</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="doubling stackable three column ui grid container">
         <% films.forEach(function (film) { %>
-        <tr>
-            <td><%= film.Title %></td>
-            <td><%= film.Year %></td>
-            <td><%= film.Runtime %></td>
-            <td><%= film.imdbRating %></td>
-            <td><%= film._id %></td>
-            <td><%= film.BoxOffice %></td>
-            <td><%= film.Production %></td>
-        </tr>
+            <div class="column">
+                <div class="ui card">
+                    <div class="content">
+                        <a class="header" href="/movies/<%= film._id %>"><%= film.Title %></a>
+                        <div class="description">
+                            <p><%= film.Plot.substring(0, 50) %> ...</p>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a>
+                            <i class="user icon"></i>
+                            <%= film.comments.length %> Comments
+                        </a>
+                    </div>
+                </div>
+            </div>
         <% }); %>
-    </tbody>
-</table>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.1/js/jquery.tablesorter.min.js"></script>
-<script src="js/script.js"></script>
+</div>
+
+<% include ../partials/footer.ejs%>

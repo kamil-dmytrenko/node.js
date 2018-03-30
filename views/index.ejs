@@ -1,15 +1,16 @@
+<% include ./partials/header.ejs%>
 
+<div class="landing-header">
+    <h1 class="ui header grey huge inverted"><i class="film icon"></i>REST Movie App</h1>
 
-<h1>REST Movie App</h1>
+    <form method="get" action="/movies">
+        <button class="ui animated ui inverted big button" tabindex="0">
+            <div class="visible content">Show all movies</div>
+            <div class="hidden content">
+                <i class="right arrow icon"></i>
+            </div>
+        </button>
+    </form>
+</div>
 
-
-<form method="post" action="/movies">
-    <input type="text" name="title">
-    <button>Search</button>
-</form>
-
-<form method="get" action="/movies">
-    <button>Show all movies</button>
-</form>
-
-
+<% include ./partials/footer.ejs%>

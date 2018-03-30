@@ -1,3 +1,178 @@
-<h1>REST Movie App</h1>
+<% include ../partials/header.ejs%>
 
-<li><%= film %></li>
+<div class="ui container">
+    <h1 class="ui center aligned header huge inverted"><i class="film icon"></i><%= film.Title%></h1>
+
+    <div class="ui two column stackable grid container">
+        <div class="column ten wide infoSection">
+                <div class="ui divided list">
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Year</div>
+                            <div class="description"><%= film.Year%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Rated</div>
+                            <div class="description"><%= film.Rated%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Runtime</div>
+                            <div class="description"><%= film.Runtime%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Genre</div>
+                            <div class="description"><%= film.Genre%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Director</div>
+                            <div class="description"><%= film.Director%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Writer</div>
+                            <div class="description"><%= film.Writer%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Actors</div>
+                            <div class="description"><%= film.Actors%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Plot</div>
+                            <div class="description"><%= film.Plot%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Language</div>
+                            <div class="description"><%= film.Language%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Country</div>
+                            <div class="description"><%= film.Country%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Year</div>
+                            <div class="description"><%= film.Year%></div>
+                        </div>
+                    </div>
+                    <% film.Ratings.forEach(rating => { %>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header"><%= rating.Source%></div>
+                            <div class="description"><%= rating.Value %></div>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Metascore</div>
+                            <div class="description"><%= film.Metascore%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">imdbRating</div>
+                            <div class="description"><%= film.imdbRating%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">imdbVotes</div>
+                            <div class="description"><%= film.imdbVotes%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">imdbID</div>
+                            <div class="description"><%= film.imdbID%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Type</div>
+                            <div class="description"><%= film.Type%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">DVD</div>
+                            <div class="description"><%= film.DVD%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">BoxOffice</div>
+                            <div class="description"><%= film.BoxOffice%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Production</div>
+                            <div class="description"><%= film.Production%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">Website</div>
+                            <div class="description"><%= film.Website%></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">ID</div>
+                            <div class="description"><%= film._id %></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="column six wide infoSection">
+            <div class="row">
+                <img class="ui huge image" src="<%= film.Poster %>">
+            </div>
+            <div class="row">
+                <div class="ui divided list">
+                    <div class="header">Comments</div>
+                    <% film.comments.forEach(comment => { %>
+                    <div class="item">
+                        <div class="content">
+                            <div class="description"><%= comment.text%></div>
+                        </div>
+                    </div>
+                    <% }) %>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <a class="ui animated ui inverted  fluid button" tabindex="0" href="/movies">
+                <div class="visible content">back</div>
+                <div class="hidden content">
+                    <i class="left arrow icon"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<% include ../partials/footer.ejs%>
