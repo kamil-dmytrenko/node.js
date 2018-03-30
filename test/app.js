@@ -59,7 +59,7 @@ describe('API endpoint /movies', function() {
             .then(function(res) {
                 expect(res).to.have.status(200);
                 // expect(res).to.equal(res);
-                expect(dir('./views/show-new.ejs')).to.exist;
+                expect(dir('./views/show-one.ejs')).to.exist;
             });
     });
 
