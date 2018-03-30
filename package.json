@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kamil-dmytrenko/nodejs-recruitment-task.git"
+    "url": "git+https://github.com/kamil-dmytrenko/node.js.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kamil-dmytrenko/nodejs-recruitment-task/issues"
+    "url": "https://github.com/kamil-dmytrenko/node.js/issues"
   },
-  "homepage": "https://github.com/kamil-dmytrenko/nodejs-recruitment-task#readme",
+  "homepage": "https://github.com/kamil-dmytrenko/node.js#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
