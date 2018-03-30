@@ -1,5 +1,6 @@
 let express = require("express"),
     request = require('request'),
+    errorHandler = require('../controllers/errorController');
     router  = express.Router();
 
 let Film = require("../models/film");
@@ -25,6 +26,7 @@ router.post('/', (req, res) => {
     db.collection('films').findOne({"Title": req.body.title}, (err, foundFilm) =>{
         if (err) return errorHandler(err);
         if (foundFilm) {
+            console.log(foundFilm);
             res.render('films/show-one', {film:foundFilm});
         } else {
             let url = 'http://www.omdbapi.com/?apikey=thewdb&t='+req.body.title;

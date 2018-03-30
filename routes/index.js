@@ -1,5 +1,6 @@
 let express = require("express"),
-    router  = express.Router();
+    router  = express.Router(),
+    errorHandler = require('../controllers/errorController');
 
 let Film = require("../models/film");
 

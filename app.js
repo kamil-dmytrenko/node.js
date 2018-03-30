@@ -12,25 +12,16 @@ const Film    = require('./models/film'),
 // Require the configuration and pass
 // the app as argument to the returned functions.
 require('./config')(app);
+require('./controllers/errorController');
 
 //requiring routes
-var commentRoutes    = require("./routes/comments"),
-    filmRoutes = require("./routes/films"),
-    indexRoutes      = require("./routes/index");
+const commentRoutes    = require("./routes/comments"),
+      filmRoutes       = require("./routes/films"),
+      indexRoutes      = require("./routes/index");
 
 app.use("/", indexRoutes);
 app.use("/movies", filmRoutes);
 app.use("/comments", commentRoutes);
 
-
-
-
-function errorHandler (err, req, res, next) {
-    if (res.headersSent) {
-        return next(err)
-    }
-    res.status(500)
-    res.render('error', { error: err })
-}
 module.exports = app;
 

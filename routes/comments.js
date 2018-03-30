@@ -1,4 +1,5 @@
 let express = require("express"),
+    errorHandler = require('../controllers/errorController');
     router  = express.Router();
 
 let Comment = require("../models/comment"),
