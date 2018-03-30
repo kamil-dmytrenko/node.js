@@ -16,7 +16,10 @@ require('./config')(app);
 
 
 app.get('/', (req, res) => {
-   res.render('index');
+    Film.find({}, (err, films) => {
+        if (err) throw err;
+        res.render('index', {films:films});
+    });
 });
 
 //list of all movies in db
@@ -27,13 +30,20 @@ app.get('/movies', (req, res) => {
     });
 });
 
+//show full information about one film
+app.get('/movies/:id', (req, res) => {
+   Film.findById(req.params.id).populate("comments").exec((err, foundFilm) => {
+       if (err) throw err;
+       res.render('films/show-one', {film: foundFilm})
+   })
+});
+
 // add new film to db if present in OMDB by passing film title in request body
 app.post('/movies', (req, res) => {
     db.collection('films').findOne({"Title": req.body.title}, (err, foundFilm) =>{
        if (err) throw err;
        if (foundFilm) {
-           res.render('films/show-new', {film:foundFilm});
-           // res.send(foundFilm);
+           res.render('films/show-one', {film:foundFilm});
        } else {
            let url = 'http://www.omdbapi.com/?apikey=thewdb&t='+req.body.title;
            request(url, (error, response, body) => {
@@ -48,8 +58,7 @@ app.post('/movies', (req, res) => {
                                if (err) throw err;
                                Film.findOne({"Title": result.Title}, (err, foundFilm) => {
                                    if (err) throw err;
-                                   res.render('films/show-new', {film:foundFilm});
-                                   // res.send(foundFilm);
+                                   res.render('films/show-one', {film:foundFilm});
                                })
                            });
                        });
@@ -64,9 +73,9 @@ app.post('/movies', (req, res) => {
 
 // find all comments present in db
 app.get('/comments', (req, res) => {
-    Comment.find({}, (err, comments) => {
+    Film.find({}).populate("comments").exec((err, foundFilms) => {
         if (err) throw err;
-        res.render('comments/show-all', {comments:comments});
+        res.render('comments/show-all', {films: foundFilms});
     });
 });
 
@@ -85,26 +94,15 @@ app.post('/comments', (req, res) => {
                comment.save();
                foundFilm.comments.push(comment);
                foundFilm.save();
-               Comment.findById(comment._id, (err, foundComment) => {
-                   if (err) throw err;
-                   res.send(foundComment.text);
-               });
+               res.redirect('/movies/'+filmID);
+               // Comment.findById(comment._id, (err, foundComment) => {
+               //     if (err) throw err;
+               //     res.redirect();
+               // });
            });
        }
     })
 });
-
-function findAllCommentsWithAssociatedFilmName() {
-    Film.find({}, (err, foundFilms) => {
-        if (err) throw err;
-        Comment.find({}, (err, foundComments) => {
-            if (err) throw err;
-
-        })
-    });
-}
-
-// findAllCommentsWithAssociatedFilmName();
 
 module.exports = app;
 
