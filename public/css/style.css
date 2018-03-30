@@ -1,0 +1,36 @@
+body {
+    /*background-color: lightgray;*/
+    background-image: url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=85a8dfe53397e331a31030c530fadf44&auto=format&fit=crop&w=1350&q=80);
+    background-size: 100% auto;
+    background-position: center top;
+}
+.landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 30vh;
+    height: 100%;
+}
+
+h1.ui.center.header {
+    margin-top: 2em;
+}
+
+a.ui.animated.inverted.fluid.button {
+    margin-right: 0;
+}
+
+.infoSection {
+    padding: 5vh 10vh;
+    background-color: whitesmoke;
+}
+
+.container {
+    padding-bottom: 10vh;
+}
+
+.filmTitle {
+    display: none;
+}
+
+
