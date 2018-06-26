@@ -4,6 +4,7 @@
   "description": "Hey there!",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "mocha --exit"
   },
@@ -30,6 +31,7 @@
     "sinon-mongoose": "^2.1.1"
   },
   "devDependencies": {
+    "nodemon": "^1.17.5",
     "chai": "^4.1.2",
     "chai-files": "^1.4.0",
     "chai-http": "^4.0.0",
