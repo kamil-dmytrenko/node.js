@@ -1,12 +1,10 @@
 const mongoose     = require('mongoose');
 
-let port = process.env.PORT || 3000;
-let CONNECT_URI = 'mongodb://localhost/movie-rest-app';
-// let CONNECT_URI = 'mongodb://admin:admin@ds121299.mlab.com:21299/movie-rest-app';
+let port = process.env.PORT;
 
 module.exports = (app) => {
     // Connect to database
-  mongoose.connect(CONNECT_URI)
+  mongoose.connect(process.env.DB_HOST)
     .then(database => {
       db = database;
       console.log('Connected to MongoDB');})
@@ -16,5 +14,5 @@ module.exports = (app) => {
         console.log(`Your application is running on http://localhost:${port}`);
       });
     })
-    .catch(err => app.send(err))
+    .catch(err => console.log(err))
 };
