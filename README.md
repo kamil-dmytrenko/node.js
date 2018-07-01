@@ -1,5 +1,5 @@
 # node.js app using OMDB Api 
-You can try out this app under : https://francophone-sorry-73357.herokuapp.com/
+
 
 ## Technologies used: Node.js, Express
 * Database: MongoDB hosted on mlab.com
