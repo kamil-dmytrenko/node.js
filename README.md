@@ -3,7 +3,6 @@
 
 ## Technologies used: Node.js, Express
 * Database: MongoDB hosted on mlab.com
-* Views: EJS,
 * Testing: Mocha, Chai
 
 routes:
